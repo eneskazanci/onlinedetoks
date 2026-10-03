@@ -1,0 +1,2241 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Detoks Programı Başlıyor — 7 Günlük Bütünsel Arınma</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-sky: #edf2f8;
+      --bg-cloud: #fbfcfe;
+      --clay-surface: #ffffff;
+      
+      --primary-green: #204e2c;
+      --primary-green-dark: #15381e;
+      --accent-sage: #4f8249;
+      --accent-soft-sage: #e8f4e7;
+      
+      --clay-sun-yellow: #ffb834;
+      --clay-peach: #f9b4a4;
+      --clay-coral: #ee6f59;
+      
+      --text-main: #16261d;
+      --text-muted: #526357;
+      --text-light: #7e8f83;
+      
+      --radius-sm: 16px;
+      --radius-md: 24px;
+      --radius-lg: 36px;
+      --radius-pill: 9999px;
+
+      --shadow-clay-card: 
+        0 18px 40px -10px rgba(25, 50, 35, 0.08),
+        0 4px 12px rgba(0, 0, 0, 0.02),
+        inset 0 2px 2px #ffffff,
+        inset 0 -3px 4px rgba(35, 65, 45, 0.03);
+
+      --shadow-clay-hover:
+        0 24px 50px -10px rgba(25, 50, 35, 0.12),
+        0 6px 16px rgba(0, 0, 0, 0.04),
+        inset 0 2px 2px #ffffff;
+
+      --shadow-clay-pill:
+        0 8px 20px rgba(30, 55, 40, 0.06),
+        inset 0 2px 2px #ffffff;
+
+      --ambient-glow:
+        0 0 65px rgba(255, 215, 155, 0.65),
+        0 25px 60px -12px rgba(35, 75, 45, 0.18);
+
+      --transition-smooth: all 0.28s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: radial-gradient(circle at 50% 0%, #fff6ef 0%, #ecf2f8 35%, #e4ebf4 100%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 95px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .bg-clouds {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .cloud-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.65;
+    }
+
+    .cloud-1 {
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, #fff1e6 0%, rgba(255, 241, 230, 0) 70%);
+      top: -120px;
+      right: -80px;
+    }
+
+    .cloud-2 {
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, #e6f3e5 0%, rgba(230, 243, 229, 0) 70%);
+      top: 35%;
+      left: -100px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Üst Şerit */
+    .top-bar-wrap {
+      padding: 16px 0 8px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .top-pill {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius-pill);
+      padding: 9px 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      box-shadow: var(--shadow-clay-pill);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-align: center;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.22);
+      flex-shrink: 0;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 24px 0 16px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #e8f5e7 0%, #dbefda 100%);
+      border: 1.5px solid rgba(86, 138, 80, 0.3);
+      color: var(--primary-green);
+      padding: 7px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      box-shadow: 0 4px 12px rgba(86, 138, 80, 0.1);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 5.8vw, 2.85rem);
+      color: var(--primary-green);
+      margin-bottom: 14px;
+      font-weight: 900;
+    }
+
+    .hero p.lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 550px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    /* 3D Tablet Konsolu */
+    .clay-console-wrapper {
+      position: relative;
+      margin: 0 0 28px;
+    }
+
+    .clay-console-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -14px;
+      border-radius: 46px;
+      background: radial-gradient(circle, rgba(255, 218, 155, 0.8) 0%, rgba(255, 235, 210, 0.45) 45%, rgba(255, 255, 255, 0) 75%);
+      filter: blur(18px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .clay-tablet {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(155deg, #ffffff 0%, #fbfdfc 60%, #f4f8f5 100%);
+      border: 3px solid rgba(255, 255, 255, 0.98);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px 22px;
+      box-shadow: var(--ambient-glow);
+    }
+
+    .tablet-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+      border-bottom: 1.5px dashed rgba(40, 80, 50, 0.12);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .tablet-time-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f6f1;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(86, 138, 80, 0.15);
+      color: var(--primary-green);
+    }
+
+    .tablet-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .pillar-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 2px solid rgba(225, 235, 226, 0.8);
+      border-radius: var(--radius-md);
+      padding: 14px 6px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+      position: relative;
+    }
+
+    .pillar-card:hover, .pillar-card.active {
+      background: #ffffff;
+      border-color: var(--accent-sage);
+      box-shadow: 0 12px 28px rgba(35, 75, 45, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .icon-holder {
+      width: 58px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    .clay-sun-3d {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ffe083 0%, #ffaa2b 60%, #e88500 100%);
+      box-shadow: 0 8px 18px rgba(255, 170, 43, 0.38), inset 0 2px 4px rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .clay-sun-core {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff6cd 0%, #ffc043 100%);
+    }
+
+    .clay-flower-3d {
+      width: 48px;
+      height: 48px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flower-petals-mesh {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #ff6b6b, #f97316, #ec4899, #a855f7, #3b82f6, #06b6d4, #ff6b6b);
+      mask: radial-gradient(circle 22px, transparent 98%, black 100%);
+      -webkit-mask: radial-gradient(circle, transparent 14px, black 15px);
+    }
+
+    .flower-center-ball {
+      position: relative;
+      z-index: 2;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #93c5fd 0%, #3b82f6 60%, #1d4ed8 100%);
+    }
+
+    .clay-moon-3d {
+      width: 44px;
+      height: 44px;
+    }
+
+    .clay-moon-3d svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 6px 14px rgba(16, 185, 129, 0.35));
+    }
+
+    .pillar-name {
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 2px;
+    }
+
+    .pillar-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .pillar-play-icon {
+      margin-top: 6px;
+      font-size: 0.68rem;
+      color: var(--accent-sage);
+      font-weight: 700;
+    }
+
+    .tablet-detail-drawer {
+      background: linear-gradient(145deg, #f7faf7 0%, #edf4ed 100%);
+      border: 1.5px solid #d7e6d7;
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      text-align: left;
+    }
+
+    .detail-drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .detail-drawer-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--primary-green);
+      font-family: 'Outfit', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .detail-badge-step {
+      font-size: 0.7rem;
+      background: #ffffff;
+      border: 1px solid #c9dec9;
+      color: var(--primary-green);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+    }
+
+    .detail-drawer-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .detail-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .detail-tag {
+      background: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(35, 84, 48, 0.12);
+    }
+
+    /* 3D CTA BUTON */
+    .cta-clay-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(180deg, #2a6136 0%, #194022 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 18px 28px;
+      border-radius: var(--radius-pill);
+      box-shadow: 
+        0 14px 32px rgba(35, 84, 48, 0.32),
+        inset 0 2px 2px rgba(255, 255, 255, 0.45),
+        inset 0 -3px 4px rgba(0, 0, 0, 0.25);
+      transition: var(--transition-smooth);
+      width: 100%;
+      max-width: 440px;
+      margin: 22px auto 0;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      letter-spacing: 0.3px;
+    }
+
+    .cta-clay-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(35, 84, 48, 0.38);
+      background: linear-gradient(180deg, #306e3d 0%, #1d4b27 100%);
+    }
+
+    .cta-clay-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .hero-sub-pills {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .hero-sub-pills span.dot {
+      color: var(--accent-sage);
+      font-size: 0.6rem;
+    }
+
+    /* Bölümler */
+    section {
+      padding: 34px 0;
+    }
+
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .section-title-wrap h2 {
+      font-size: clamp(1.45rem, 3.8vw, 1.85rem);
+      color: var(--primary-green);
+      margin-bottom: 8px;
+    }
+
+    .section-title-wrap p {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* Belirti Listesi (Neden Detoks?) */
+    .symptom-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 22px 20px;
+      box-shadow: var(--shadow-clay-card);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      margin-bottom: 12px;
+    }
+
+    .symptom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .symptom-item {
+      background: #f8faf8;
+      border: 1px solid #e1ebe1;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    /* Canlı Zoom Seansları Grid */
+    .sessions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .session-item {
+      background: #ffffff;
+      border: 1.5px solid #dce8dc;
+      border-radius: var(--radius-md);
+      padding: 16px 14px;
+      box-shadow: var(--shadow-clay-card);
+      text-align: left;
+      transition: var(--transition-smooth);
+    }
+
+    .session-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-sage);
+    }
+
+    .session-icon {
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
+
+    .session-item h4 {
+      font-size: 0.92rem;
+      color: var(--primary-green);
+      margin-bottom: 2px;
+    }
+
+    .session-item span.instructor {
+      font-size: 0.76rem;
+      color: var(--accent-sage);
+      font-weight: 700;
+      display: block;
+    }
+
+    .session-gift-badge {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 6px;
+    }
+
+    /* 3 WhatsApp Grubu */
+    .groups-box {
+      background: linear-gradient(150deg, #ffffff 0%, #f4f8f4 100%);
+      border: 2px solid #dbe8db;
+      border-radius: var(--radius-lg);
+      padding: 26px 20px;
+      box-shadow: var(--shadow-clay-card);
+    }
+
+    .group-step-card {
+      background: #ffffff;
+      border: 1px solid #d8e5d8;
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      text-align: left;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .group-step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent-soft-sage);
+      color: var(--primary-green);
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .group-step-card h4 {
+      font-size: 0.94rem;
+      color: var(--primary-green);
+      margin-bottom: 2px;
+    }
+
+    .group-step-card p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* Doktor Kadrosu */
+    .clay-doctors-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .clay-doc-card {
+      background: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius-md);
+      padding: 18px 12px;
+      text-align: center;
+      box-shadow: var(--shadow-clay-card);
+      position: relative;
+    }
+
+    .doc-avatar-wrap {
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      overflow: hidden;
+      border: 3.5px solid #e7f2e6;
+      position: relative;
+      background-color: #f1f4f1;
+    }
+
+    .doc-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .doc-verified-check {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 18px;
+      height: 18px;
+      background: #22c55e;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .clay-doc-card h4 {
+      font-size: 0.96rem;
+      margin-bottom: 2px;
+    }
+
+    .clay-doc-card span.doc-specialty {
+      font-size: 0.76rem;
+      color: var(--accent-sage);
+      font-weight: 700;
+      display: block;
+    }
+
+    .clay-specialist-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 7px;
+    }
+
+    .clay-pill-item {
+      background: #ffffff;
+      border: 1.5px solid #d5e4d5;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      color: var(--primary-green);
+      font-weight: 700;
+    }
+
+    /* SSS */
+    .clay-faq-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .clay-faq-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(225, 235, 226, 0.9);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-clay-card);
+      overflow: hidden;
+    }
+
+    .clay-faq-header {
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .clay-faq-header h4 {
+      font-size: 0.95rem;
+      color: var(--primary-green);
+      font-weight: 700;
+      padding-right: 10px;
+    }
+
+    .clay-faq-btn-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #edf5ed;
+      border: 1px solid #cde2cd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--primary-green);
+      flex-shrink: 0;
+      font-weight: 800;
+    }
+
+    .clay-faq-card.active .clay-faq-btn-icon {
+      transform: rotate(45deg);
+      background: var(--primary-green);
+      color: #ffffff;
+    }
+
+    .clay-faq-body {
+      display: none;
+      padding: 0 18px 16px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      border-top: 1px solid rgba(40, 80, 50, 0.06);
+      padding-top: 12px;
+    }
+
+    .clay-faq-card.active .clay-faq-body {
+      display: block;
+    }
+
+    /* Final Box */
+    .clay-final-box {
+      text-align: center;
+      background: linear-gradient(150deg, #ffffff 0%, #f6faf5 100%);
+      border: 2px solid #d5e6d4;
+      border-radius: var(--radius-lg);
+      padding: 34px 20px;
+      box-shadow: var(--shadow-clay-card);
+      margin-top: 16px;
+    }
+
+    .clay-final-box h2 {
+      font-size: clamp(1.5rem, 4.2vw, 2rem);
+      color: var(--primary-green);
+      margin-bottom: 10px;
+    }
+
+    .clay-final-box p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 0.94rem;
+      max-width: 490px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Sticky Bar */
+    .clay-sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border-top: 1.5px solid rgba(40, 80, 50, 0.1);
+      padding: 10px 16px;
+      z-index: 999;
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .clay-sticky-cta .cta-clay-btn {
+      margin: 0 auto;
+      padding: 14px 20px;
+      font-size: 0.96rem;
+    }
+
+    footer {
+      padding: 35px 0 95px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      border-top: 1px solid rgba(40, 80, 50, 0.08);
+    }
+
+    .admin-link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(40, 80, 50, 0.25);
+      color: var(--text-muted);
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 14px;
+      transition: var(--transition-smooth);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      opacity: 0.75;
+    }
+
+    .admin-link-btn:hover {
+      opacity: 1;
+      background: #ffffff;
+      border-color: var(--primary-green);
+      transform: rotate(60deg) scale(1.08);
+      box-shadow: 0 4px 12px rgba(32, 78, 44, 0.15);
+    }
+
+    /* ----------------------------------------------------
+       ADMIN PANEL STİLLERİ (ŞİFRELİ MODAL & DÜZENLEME PANELİ)
+       ---------------------------------------------------- */
+    .admin-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 32, 22, 0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      animation: adminFadeIn 0.2s ease;
+    }
+
+    @keyframes adminFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .admin-modal {
+      background: rgba(254, 252, 248, 0.88) !important;
+      backdrop-filter: blur(24px) saturate(170%);
+      -webkit-backdrop-filter: blur(24px) saturate(170%);
+      color-scheme: light !important;
+      border-radius: 28px;
+      width: 100%;
+      max-width: 640px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.22);
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .admin-header {
+      padding: 18px 22px;
+      background: linear-gradient(135deg, #204e2c 0%, #15381e 100%);
+      color: #ffffff;
+      border-top-left-radius: 26px;
+      border-top-right-radius: 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .admin-header h3 {
+      font-size: 1.15rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .admin-close-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #ffffff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .admin-nav {
+      display: flex;
+      overflow-x: auto;
+      background: #f4f7f4;
+      border-bottom: 1px solid #dce5dc;
+      padding: 6px 12px;
+      gap: 6px;
+    }
+
+    .admin-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition-smooth);
+    }
+
+    .admin-tab-btn.active {
+      background: #ffffff;
+      color: var(--primary-green);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .admin-body {
+      padding: 20px 22px;
+      flex: 1;
+      overflow-y: auto;
+      background: transparent !important;
+      color-scheme: light !important;
+    }
+
+    .admin-form-group {
+      margin-bottom: 16px;
+    }
+
+    .admin-form-group label {
+      display: block;
+      font-size: 0.88rem !important;
+      font-weight: 800 !important;
+      color: #152c1e !important;
+      margin-bottom: 6px;
+    }
+
+    .admin-input, .admin-textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid #d4ded0 !important;
+      font-family: inherit;
+      font-size: 0.92rem !important;
+      font-weight: 600 !important;
+      color: #122217 !important;
+      background-color: rgba(255, 253, 247, 0.88) !important; /* Yarı Saydam Krem Dolgu */
+      backdrop-filter: blur(8px);
+      color-scheme: light !important;
+      outline: none;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03) !important;
+      transition: all 0.2s ease;
+    }
+
+    .admin-input::placeholder, .admin-textarea::placeholder {
+      color: #7b8f80 !important;
+      opacity: 1 !important;
+    }
+
+    .admin-input:focus, .admin-textarea:focus {
+      background-color: #ffffff !important;
+      border-color: #204e2c !important;
+      box-shadow: 0 0 0 3px rgba(32, 78, 44, 0.16) !important;
+    }
+
+    .admin-textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    /* Toggle Switch */
+    .admin-toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      background: #fffdf9 !important;
+      border: 1.5px solid #dce6d8 !important;
+      border-radius: 14px;
+      margin-bottom: 10px;
+    }
+
+    .admin-toggle-info h5 {
+      font-size: 0.9rem;
+      color: var(--primary-green);
+      margin-bottom: 2px;
+    }
+
+    .admin-toggle-info p {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: #cbd5e1;
+      transition: .3s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #22c55e;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    .admin-footer {
+      padding: 16px 22px;
+      background: #f8faf8;
+      border-top: 1px solid #e5ede5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom-left-radius: 26px;
+      border-bottom-right-radius: 26px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .admin-btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition-smooth);
+    }
+
+    .admin-btn-save {
+      background: var(--primary-green);
+      color: #ffffff;
+      flex: 1;
+    }
+
+    .admin-btn-save:hover {
+      background: var(--primary-green-dark);
+    }
+
+    .admin-btn-export {
+      background: #f1f5f9;
+      color: var(--text-main);
+      border: 1px solid #cbd5e1;
+    }
+
+    .admin-btn-reset {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    /* Giriş Şifre Modalı */
+    .login-box {
+      max-width: 380px;
+      text-align: center;
+      padding: 32px 26px;
+      background: rgba(254, 252, 248, 0.78) !important;
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1.5px solid rgba(255, 255, 255, 0.9) !important;
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.2), inset 0 2px 3px rgba(255, 255, 255, 0.9) !important;
+      border-radius: 28px;
+    }
+
+    .login-box h4 {
+      font-size: 1.25rem;
+      color: var(--primary-green);
+      margin-bottom: 8px;
+    }
+
+    .login-box p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 480px) {
+      .symptom-grid, .sessions-grid, .clay-doctors-grid {
+        grid-template-columns: 1fr;
+      }
+      .clay-doc-card {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 14px;
+      }
+      .doc-avatar-wrap {
+        margin: 0;
+        width: 72px;
+        height: 72px;
+        flex-shrink: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-clouds">
+    <div class="cloud-shape cloud-1"></div>
+    <div class="cloud-shape cloud-2"></div>
+  </div>
+
+  <!-- Üst Canlı Bar -->
+  <div class="top-bar-wrap" id="sectionTopBar">
+    <div class="top-pill">
+      <span class="live-dot"></span>
+      <span id="txtTopBar">🌿 7 Günlük 1. Seviye Detoks Tanıtım Programı Başlıyor — Kontenjan Sınırlıdır!</span>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- 1. HERO BÖLÜMÜ -->
+    <section class="hero" id="sectionHero">
+      <div class="hero-badge" id="txtHeroBadge">⚡ Dr. Abdullah KESGİN & Uzm. Dr. Eyyüb YILMAZ ve 45 Kişilik Ekip Eşliğinde</div>
+      <h1 id="txtHeroTitle">Online Detoks<br>Programı Başlıyor</h1>
+      <p class="lead" id="txtHeroLead">
+        Sabahları zor uyanmaktan, geçmeyen ödem ve yorgunluk hissinden yoruldun mu? Aç kalmadan, evinin düzenini bozmadan ve yalnız olmadan bedenini 7 günde sıfırla.
+      </p>
+
+      <!-- 3D CLAY TABLET KONSOLU -->
+      <div class="clay-console-wrapper" id="sectionConsole">
+        <div class="clay-tablet">
+          
+          <div class="tablet-top-bar">
+            <span class="tablet-time-item">
+              <span>⏰</span> 7 Günlük Arınma Ritmi
+            </span>
+            <span style="font-size: 0.74rem; color: var(--accent-sage); font-weight: 700;">● WhatsApp + Zoom Canlı</span>
+          </div>
+
+          <!-- 3 Adım -->
+          <div class="tablet-pillars">
+            
+            <div class="pillar-card active" onclick="switchThemePillar('sabah', this)">
+              <div class="icon-holder">
+                <div class="clay-sun-3d">
+                  <div class="clay-sun-core"></div>
+                </div>
+              </div>
+              <div class="pillar-name" id="txtPillar1Name">Sabah Uyanışı</div>
+              <div class="pillar-sub" id="txtPillar1Sub">Güne Hafif Başla</div>
+              <div class="pillar-play-icon">▶ İncele</div>
+            </div>
+
+            <div class="pillar-card" onclick="switchThemePillar('motivasyon', this)">
+              <div class="icon-holder">
+                <div class="clay-flower-3d">
+                  <div class="flower-petals-mesh"></div>
+                  <div class="flower-center-ball"></div>
+                </div>
+              </div>
+              <div class="pillar-name" id="txtPillar2Name">Grup Enerjisi</div>
+              <div class="pillar-sub" id="txtPillar2Sub">Birlikte Başarıyoruz</div>
+              <div class="pillar-play-icon">▶ İncele</div>
+            </div>
+
+            <div class="pillar-card" onclick="switchThemePillar('gece', this)">
+              <div class="icon-holder">
+                <div class="clay-moon-3d">
+                  <svg viewBox="0 0 100 100" fill="none">
+                    <defs>
+                      <linearGradient id="moonClayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#34d399" />
+                        <stop offset="60%" stop-color="#059669" />
+                        <stop offset="100%" stop-color="#0284c7" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M78 18C52 18 31 39 31 65C31 75 34 84 40 91C22 84 10 67 10 47C10 23 29 4 53 4C63 4 72 7 78 18Z" fill="url(#moonClayGrad)" />
+                  </svg>
+                </div>
+              </div>
+              <div class="pillar-name" id="txtPillar3Name">Gece Onarımı</div>
+              <div class="pillar-sub" id="txtPillar3Sub">Hediye Canlı Seans</div>
+              <div class="pillar-play-icon">▶ İncele</div>
+            </div>
+
+          </div>
+
+          <div class="tablet-detail-drawer" id="themeDetailBox">
+            <div class="detail-drawer-header">
+              <div class="detail-drawer-title" id="themeDetailTitle">
+                <span>☀️</span> Güne Arınarak & Hafif Başla
+              </div>
+              <span class="detail-badge-step" id="themeDetailBadge">1. Adım</span>
+            </div>
+            <p class="detail-drawer-text" id="themeDetailText">
+              Sabah telefonuna günün başlangıç rehberi ve 10 dakikalık omurga açıcı nefes hareketi gelir. Yüzlerce kadınla aynı anda uygulamanın verdiği güçle güne dinç başlarsın.
+            </p>
+            <div class="detail-tags-row" id="themeDetailTags">
+              <span class="detail-tag">✓ Günlük Başlangıç Rehberi</span>
+              <span class="detail-tag">✓ 10 Dk Nefes Egzersizi</span>
+              <span class="detail-tag">✓ Binlerce Kadın Seninle</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- WhatsApp Butonu -->
+      <a href="https://chat.whatsapp.com/ItHdw0hFUecEZMRWCLAoMU" target="_blank" class="cta-clay-btn wa-link">
+        <svg viewBox="0 0 24 24">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.072-1.026-.057-.235-.077-.52-.178-.89-.34-.99-.434-1.77-1.39-2.22-1.99-.05-.07-.49-.65-.49-1.24 0-.59.31-.88.42-.99.11-.11.24-.14.33-.14.08 0 .17 0 .24.01.08.01.19-.03.29.22.1.25.35.86.38.93.03.07.05.15.01.24-.04.09-.07.15-.14.23-.07.08-.15.17-.21.23-.07.07-.15.15-.06.3.09.15.39.64.84 1.04.57.51 1.06.67 1.21.75.15.07.24.06.33-.04.09-.1.38-.44.48-.59.1-.15.2-.13.33-.08.13.05.85.4 1 .47.15.07.25.11.29.17.04.06.04.36-.1.76zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.05 22l4.985-1.307A9.948 9.948 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+        </svg>
+        <span class="wa-btn-text">DETOKS TANITIMINA KATIL →</span>
+      </a>
+
+      <div class="hero-sub-pills">
+        <span>🌿 Ücretsiz Tanıtım Programı</span>
+        <span class="dot">●</span>
+        <span>🏠 Evinin Konforunda</span>
+        <span class="dot">●</span>
+        <span>👩‍⚕️ 45 Kişilik Uzman Heyeti</span>
+      </div>
+    </section>
+
+    <!-- 2. BU BELİRTİLERİ YAŞIYOR MUSUN? (Neden Detoks?) -->
+    <section id="sectionSymptoms">
+      <div class="symptom-card">
+        <div class="section-title-wrap" style="margin-bottom: 14px;">
+          <h2 id="txtSymptomsTitle">Bedeninin Arınmaya İhtiyacı Olduğunu Nasıl Anlarsın?</h2>
+          <p id="txtSymptomsLead">Günlük telaş, stres ve yanlış beslenmeyle karaciğer ve bağırsaklar yorulur. Bu belirtilerden biri bile sende varsa, bedenin dinlenmek istiyordur:</p>
+        </div>
+
+        <div class="symptom-grid" id="symptomsList">
+          <div class="symptom-item"><span>⚡</span> Sabahları yorgun uyanma hali</div>
+          <div class="symptom-item"><span>🌊</span> Vücutta geçmeyen şişkinlik ve ödem</div>
+          <div class="symptom-item"><span>🍕</span> Tatlı ve sürekli atıştırma krizleri</div>
+          <div class="symptom-item"><span>😴</span> Rahatsız ve kalitesiz uyku</div>
+          <div class="symptom-item"><span>💆‍♀️</span> Gün içi baş ağrısı ve halsizlik</div>
+          <div class="symptom-item"><span>🌸</span> Zihinsel yorgunluk ve moralsizlik</div>
+        </div>
+
+        <div style="background: #f1f7f1; border-radius: var(--radius-sm); padding: 14px; margin-top: 14px; text-align: center; font-size: 0.88rem; color: var(--primary-green); font-weight: 700;">
+          💡 Detoks; bedenin "yeniden başlat" tuşuna basmaktır. Karaciğer ve bağırsakların yükünü hafifleterek enerjini ve hafifliğini geri kazanmanı sağlar.
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HER AKŞAM HEDİYE CANLI ZOOM SEANSLARI -->
+    <section id="sectionSessions">
+      <div class="section-title-wrap">
+        <h2>Her Akşam Hediye: Canlı Zoom Seansları 🎁</h2>
+        <p>1. Seviye Detoks boyunca beslenmeyle birlikte ruhunu, zihnini ve bedenini hediye atölyelerimizle destekliyoruz:</p>
+      </div>
+
+      <div class="sessions-grid" id="sessionsGrid">
+        <div class="session-item">
+          <span class="session-gift-badge">Hediye Seans</span>
+          <div class="session-icon">🧘‍♀️</div>
+          <h4>Yüz Yogası & Doğal Güzellik</h4>
+          <span class="instructor">Aslı Özden</span>
+        </div>
+
+        <div class="session-item">
+          <span class="session-gift-badge">Hediye Seans</span>
+          <div class="session-icon">🌬️</div>
+          <h4>Nefes Eğitimi & Zihin Dinginliği</h4>
+          <span class="instructor">Merve Nayman</span>
+        </div>
+
+        <div class="session-item">
+          <span class="session-gift-badge">Hediye Seans</span>
+          <div class="session-icon">✨</div>
+          <h4>EFT & Stres Boşaltma</h4>
+          <span class="instructor">Aygün Güleşir</span>
+        </div>
+
+        <div class="session-item">
+          <span class="session-gift-badge">Hediye Seans</span>
+          <div class="session-icon">😄</div>
+          <h4>Kahkaha & Pozitif Enerji</h4>
+          <span class="instructor">Gülay İdalı</span>
+        </div>
+
+        <div class="session-item">
+          <span class="session-gift-badge">Hediye Seans</span>
+          <div class="session-icon">🧠</div>
+          <h4>Nöroformat Meditasyon</h4>
+          <span class="instructor">Fazilet Eberdes</span>
+        </div>
+
+        <div class="session-item">
+          <span class="session-gift-badge">Hediye Seans</span>
+          <div class="session-icon">🌸</div>
+          <h4>Beden & Zihin Terapi</h4>
+          <span class="instructor">Sibel Odabaşı</span>
+        </div>
+
+        <div class="session-item">
+          <span class="session-gift-badge">Hediye Seans</span>
+          <div class="session-icon">🔬</div>
+          <h4>Bilinçli Beslenme & Gıda</h4>
+          <span class="instructor">Erdem Öner (TÜBİTAK Gıda Müh.)</span>
+        </div>
+
+        <div class="session-item">
+          <span class="session-gift-badge">Hediye Seans</span>
+          <div class="session-icon">💖</div>
+          <h4>Duygusal Yenilenme (JAAS)</h4>
+          <span class="instructor">Ayten Demir</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 3 AYRI WHATSAPP GRUBU İLE KESİNTİSİZ DESTEK -->
+    <section id="sectionGroups">
+      <div class="groups-box">
+        <div class="section-title-wrap" style="margin-bottom: 18px;">
+          <h2>Süreç Nasıl İlerliyor? 💬</h2>
+          <p>Yalnız değilsin! İletişimi düzenli tutmak için 3 özel WhatsApp grubuyla adım adım ilerliyoruz:</p>
+        </div>
+
+        <div class="group-step-card">
+          <div class="group-step-num">1</div>
+          <div>
+            <h4>Ana Detoks Grubu</h4>
+            <p>Günlük başlangıç menüsü, Zoom bağlantıları, hafif hareket videoları ve motivasyon paylaşımları bu gruptan akar.</p>
+          </div>
+        </div>
+
+        <div class="group-step-card">
+          <div class="group-step-num">2</div>
+          <div>
+            <h4>Soru - Cevap Grubu</h4>
+            <p>Aklına takılan her şeyi sorabileceğin, doktorumuz ve 45 kişilik uzman heyetimizin doğrudan yanıtladığı destek hattı.</p>
+          </div>
+        </div>
+
+        <div class="group-step-card">
+          <div class="group-step-num">3</div>
+          <div>
+            <h4>Önemli Duyurular Grubu</h4>
+            <p>Kaçırmaman gereken kritik yayın saatleri ve Zoom şifreleri sadece burada paylaşılır.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 18px;">
+          <a href="https://chat.whatsapp.com/ItHdw0hFUecEZMRWCLAoMU" target="_blank" class="cta-clay-btn wa-link">
+            <span class="wa-btn-text">GRUBA KATIL — YERİNİ AYIRT →</span>
+          </a>
+          <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 8px;">Grup linki anında açılır • Başvuru ücreti yoktur</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. UZMAN VE HEKİM KADROSU -->
+    <section id="sectionDoctors">
+      <div class="section-title-wrap">
+        <h2>Güçlü Bir Sağlık Kadrosu Yanında 🌿</h2>
+        <p>4 yıldır binlerce kadının hayatına dokunan gönüllü hekim ve danışma heyetimiz:</p>
+      </div>
+
+      <div class="clay-doctors-grid" id="doctorsGrid">
+        <div class="clay-doc-card">
+          <div class="doc-avatar-wrap">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&auto=format&fit=crop&q=80" alt="Dr. Abdullah Kesgin" loading="lazy">
+            <div class="doc-verified-check">✓</div>
+          </div>
+          <div>
+            <h4>Dr. Abdullah Kesgin</h4>
+            <span class="doc-specialty">Emekli Başhekim & Sporcu Hekim</span>
+          </div>
+        </div>
+
+        <div class="clay-doc-card">
+          <div class="doc-avatar-wrap">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&auto=format&fit=crop&q=80" alt="Uzm. Dr. Eyyüb Yılmaz" loading="lazy">
+            <div class="doc-verified-check">✓</div>
+          </div>
+          <div>
+            <h4>Uzm. Dr. Eyyüb Yılmaz</h4>
+            <span class="doc-specialty">İç Hastalıkları Uzmanı</span>
+          </div>
+        </div>
+
+        <div class="clay-doc-card">
+          <div class="doc-avatar-wrap">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80" alt="Ayşe Tolga" loading="lazy">
+            <div class="doc-verified-check">✓</div>
+          </div>
+          <div>
+            <h4>Ayşe Tolga</h4>
+            <span class="doc-specialty">Bütünsel Yaşam & Aromaterapist</span>
+          </div>
+        </div>
+
+        <div class="clay-doc-card">
+          <div class="doc-avatar-wrap">
+            <img src="https://images.unsplash.com/photo-1594824813511-209a80572e9d?w=300&auto=format&fit=crop&q=80" alt="Dr. Rezan Cezan" loading="lazy">
+            <div class="doc-verified-check">✓</div>
+          </div>
+          <div>
+            <h4>Dr. Rezan Cezan</h4>
+            <span class="doc-specialty">Bütünsel Tıp & Biyoregülasyon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="clay-specialist-pills">
+        <span class="clay-pill-item">👩‍⚕️ Hemşireler</span>
+        <span class="clay-pill-item">🥗 Diyetisyenler</span>
+        <span class="clay-pill-item">🤸 Fizyoterapistler</span>
+        <span class="clay-pill-item">🔬 Gıda Mühendisleri</span>
+        <span class="clay-pill-item">🧘 Zihinsel Destek Koçları</span>
+        <span class="clay-pill-item">🌸 Deneyimli Mezun Mentörler</span>
+      </div>
+    </section>
+
+    <!-- 6. 8. GÜN MEZUNİYET & SÜREKLİLİK -->
+    <section id="sectionGraduation">
+      <div style="background: #ffffff; border-radius: var(--radius-md); padding: 22px; box-shadow: var(--shadow-clay-card); text-align: center; border: 2px solid rgba(255,255,255,0.9);">
+        <h3 style="font-size: 1.25rem; color: var(--primary-green); margin-bottom: 8px;">🎓 8. Gün Mezuniyeti ve Sonrası</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.55; max-width: 500px; margin: 0 auto 14px;">
+          7 günü tamamlayıp ödemlerinden arınmış, hafiflemiş bir bedenle 8. günde mezuniyet kutlamamızı yapıyoruz. Deneyimlerimizi grupta paylaşıp bu arınmayı kutluyoruz. Dileyen katılımcılarımızla birlikte daha ileri seviye sağlıklı yaşam programlarımıza devam ediyoruz.
+        </p>
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-sage); background: var(--accent-soft-sage); padding: 5px 14px; border-radius: var(--radius-pill);">
+          ✨ 4 Yıldır Her Ay Düzenli Olarak Uygulanmaktadır
+        </span>
+      </div>
+    </section>
+
+    <!-- 7. SSS (AKORDİYON) -->
+    <section id="sectionFaq">
+      <div class="section-title-wrap">
+        <h2>Aklına Takılanlar 🤔</h2>
+      </div>
+
+      <div class="clay-faq-container" id="faqContainer">
+        
+        <div class="clay-faq-card active">
+          <div class="clay-faq-header" onclick="toggleClayFaq(this)">
+            <h4>Program için evden çıkmam veya zorlu şeyler yapmam gerekir mi?</h4>
+            <div class="clay-faq-btn-icon">+</div>
+          </div>
+          <div class="clay-faq-body">
+            Kesinlikle hayır. Program tamamen dijitaldir. Tüm yönlendirmeler WhatsApp grubundan gelir; akşam Zoom yayınlarına evinde çayını içerken katılırsın.
+          </div>
+        </div>
+
+        <div class="clay-faq-card">
+          <div class="clay-faq-header" onclick="toggleClayFaq(this)">
+            <h4>Bu tanıtım programı ücretli midir?</h4>
+            <div class="clay-faq-btn-icon">+</div>
+          </div>
+          <div class="clay-faq-body">
+            7 günlük bu 1. Seviye Detoks Tanıtım Programına katılım, Zoom seansları ve grup danışmanlığı tamamen ücretsizdir. Program sonrasında daha ileri seviyede devam etmek isteyenler için ücretli seçenekler sunulmaktadır. Tanıtım sürecini denemek için hiçbir ödeme yapmanız gerekmez.
+          </div>
+        </div>
+
+        <div class="clay-faq-card">
+          <div class="clay-faq-header" onclick="toggleClayFaq(this)">
+            <h4>Aç kalır mıyım, ağır bir diyet mi?</h4>
+            <div class="clay-faq-btn-icon">+</div>
+          </div>
+          <div class="clay-faq-body">
+            Hayır. Amacımız aç bırakmak değil; sindirimi yormayan, lif ve vitamin dolu doğal gıdalarla bedenin dinlenmesine ve karaciğerin rahatlamasına fırsat vermektir.
+          </div>
+        </div>
+
+        <div class="clay-faq-card">
+          <div class="clay-faq-header" onclick="toggleClayFaq(this)">
+            <h4>Bu bir tıbbi tedavi midir?</h4>
+            <div class="clay-faq-btn-icon">+</div>
+          </div>
+          <div class="clay-faq-body">
+            Hayır. Program genel bilgilendirme, arınma ve sağlıklı yaşam alışkanlığı kazandırma amaçlı bütünsel bir destek programıdır; tıbbi teşhis ve tedavinin yerine geçmez.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 8. FİNAL ÇAĞRISI -->
+    <section id="sectionFinal">
+      <div class="clay-final-box">
+        <h2 id="txtFinalTitle">Önümüzdeki 7 Günü Kendine Ayır 🌿</h2>
+        <p id="txtFinalLead">Aç kalmadan, yalnız kalmadan ve evinden çıkmadan bedeninin "yeniden başlat" tuşuna bas. Yeni dönem kontenjanları dolmadan WhatsApp grubundaki yerini al.</p>
+        <a href="https://chat.whatsapp.com/ItHdw0hFUecEZMRWCLAoMU" target="_blank" class="cta-clay-btn wa-link">
+          <svg viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.072-1.026-.057-.235-.077-.52-.178-.89-.34-.99-.434-1.77-1.39-2.22-1.99-.05-.07-.49-.65-.49-1.24 0-.59.31-.88.42-.99.11-.11.24-.14.33-.14.08 0 .17 0 .24.01.08.01.19-.03.29.22.1.25.35.86.38.93.03.07.05.15.01.24-.04.09-.07.15-.14.23-.07.08-.15.17-.21.23-.07.07-.15.15-.06.3.09.15.39.64.84 1.04.57.51 1.06.67 1.21.75.15.07.24.06.33-.04.09-.1.38-.44.48-.59.1-.15.2-.13.33-.08.13.05.85.4 1 .47.15.07.25.11.29.17.04.06.04.36-.1.76zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.05 22l4.985-1.307A9.948 9.948 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+          </svg>
+          <span class="wa-btn-text">WHATSAPP İLE ARAMIZA KATIL →</span>
+        </a>
+        <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 10px;">Yeni dönem grubu açılmıştır • Kontenjanla sınırlıdır</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Mobilde Altta Sabit Kalan Çubuk -->
+  <div class="clay-sticky-cta" id="sectionSticky">
+    <a href="https://chat.whatsapp.com/ItHdw0hFUecEZMRWCLAoMU" target="_blank" class="cta-clay-btn wa-link">
+      <svg viewBox="0 0 24 24">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.072-1.026-.057-.235-.077-.52-.178-.89-.34-.99-.434-1.77-1.39-2.22-1.99-.05-.07-.49-.65-.49-1.24 0-.59.31-.88.42-.99.11-.11.24-.14.33-.14.08 0 .17 0 .24.01.08.01.19-.03.29.22.1.25.35.86.38.93.03.07.05.15.01.24-.04.09-.07.15-.14.23-.07.08-.15.17-.21.23-.07.07-.15.15-.06.3.09.15.39.64.84 1.04.57.51 1.06.67 1.21.75.15.07.24.06.33-.04.09-.1.38-.44.48-.59.1-.15.2-.13.33-.08.13.05.85.4 1 .47.15.07.25.11.29.17.04.06.04.36-.1.76zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.05 22l4.985-1.307A9.948 9.948 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+      </svg>
+      <span class="wa-btn-text">DETOKS TANITIMINA KATIL →</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p id="txtCopyright">© 2026 Onlinedetoks. Tüm hakları saklıdır.</p>
+      <p style="margin-top: 5px; font-size: 0.74rem;">Paylaşılan bilgiler genel yaşam alışkanlığı ve motivasyon desteği içindir, tıbbi teşhis ve tedavinin yerine geçmez.</p>
+      
+      <!-- Yönetici Giriş Butonu (Sadece Dişli Simgesi) -->
+      <button class="admin-link-btn" onclick="openAdminLogin()" title="Yönetici Paneli" aria-label="Yönetici Paneli">
+        ⚙️
+      </button>
+    </div>
+  </footer>
+
+  <!-- ----------------------------------------------------
+       GÜVENLİ ADMİN PANELİ (MODAL)
+       ---------------------------------------------------- -->
+  <!-- 1. Şifre Giriş Penceresi -->
+  <div class="admin-overlay" id="adminLoginOverlay">
+    <div class="admin-modal login-box">
+      <div style="font-size: 2.2rem; margin-bottom: 8px;">🔐</div>
+      <h4>Yönetici Girişi</h4>
+      <p>Site içeriğini ve ayarlarını düzenlemek için lütfen şifrenizi girin.</p>
+      <div class="admin-form-group">
+        <input type="password" id="adminPasswordInput" class="admin-input" placeholder="Yönetici Şifresi" style="text-align: center; font-size: 1.1rem; letter-spacing: 2px;">
+      </div>
+      <div id="loginErrorMsg" style="color: #ef4444; font-size: 0.8rem; margin-bottom: 12px; display: none;">Şifre hatalı! Lütfen tekrar deneyin.</div>
+      <div style="display: flex; gap: 8px;">
+        <button class="admin-btn" style="background: #e2e8f0; color: #475569; flex: 1;" onclick="closeAdminLogin()">İptal</button>
+        <button class="admin-btn admin-btn-save" style="flex: 2;" onclick="checkAdminPassword()">Giriş Yap</button>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- 2. Tam Kapsamlı Yönetim Kontrol Paneli -->
+  <div class="admin-overlay" id="adminDashboardOverlay">
+    <div class="admin-modal">
+      <div class="admin-header">
+        <h3>⚙️ OnlineDetoks Yönetim Paneli</h3>
+        <button class="admin-close-btn" onclick="closeAdminDashboard()">✕</button>
+      </div>
+
+      <!-- Sekmeler -->
+      <div class="admin-nav">
+        <button class="admin-tab-btn active" onclick="switchAdminTab('tabGenel', this)">📝 Genel & İletişim</button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('tabBolumler', this)">👁️ Bölümleri Aç/Kapa</button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('tabDoktorlar', this)">👨‍⚕️ Doktor Kadrosu</button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('tabSeanslar', this)">🎁 Zoom Seansları</button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('tabGuvenlik', this)">🔐 Şifre & Dışa Aktar</button>
+      </div>
+
+      <div class="admin-body">
+        
+        <!-- SEKME 1: GENEL VE İLETİŞİM -->
+        <div id="tabGenel" class="admin-tab-content">
+          <div class="admin-form-group">
+            <label>💬 WhatsApp Grup Katılım Linki (Tüm Butonlar İçin):</label>
+            <input type="text" id="cfgWaLink" class="admin-input" placeholder="https://chat.whatsapp.com/...">
+          </div>
+
+          <div class="admin-form-group">
+            <label>🌿 Üst Canlı Şerit Metni:</label>
+            <input type="text" id="cfgTopBar" class="admin-input">
+          </div>
+
+          <div class="admin-form-group">
+            <label>⚡ Hero Üst Rozet Metni:</label>
+            <input type="text" id="cfgHeroBadge" class="admin-input">
+          </div>
+
+          <div class="admin-form-group">
+            <label>📌 Ana Sayfa Başlığı (H1):</label>
+            <input type="text" id="cfgHeroTitle" class="admin-input">
+          </div>
+
+          <div class="admin-form-group">
+            <label>📄 Hero Açıklama Metni:</label>
+            <textarea id="cfgHeroLead" class="admin-textarea"></textarea>
+          </div>
+
+          <div class="admin-form-group">
+            <label>🎯 Buton Yazısı (Tüm Ana Butonlar):</label>
+            <input type="text" id="cfgWaBtnText" class="admin-input" placeholder="DETOKS TANITIMINA KATIL →">
+          </div>
+
+          <div class="admin-form-group">
+            <label>© Telif Hakkı (Footer):</label>
+            <input type="text" id="cfgCopyright" class="admin-input">
+          </div>
+        </div>
+
+        <!-- SEKME 2: BÖLÜM YÖNETİMİ (GÖSTER / GİZLE / SİL) -->
+        <div id="tabBolumler" class="admin-tab-content" style="display: none;">
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 14px;">
+            İstediğiniz bölümü tek tıkla sayfadan kaldırabilir veya tekrar görünür yapabilirsiniz:
+          </p>
+
+          <div class="admin-toggle-row">
+            <div class="admin-toggle-info">
+              <h5>Üst Canlı Şerit</h5>
+              <p>En tepedeki yeşil yanıp sönen duyuru çubuğu</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleSecTopBar" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="admin-toggle-row">
+            <div class="admin-toggle-info">
+              <h5>3D Tablet Konsolu (Sirkadiyen Ritim)</h5>
+              <p>Sabah, Öğle ve Gece adımlarını gösteren 3D konsol</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleSecConsole" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="admin-toggle-row">
+            <div class="admin-toggle-info">
+              <h5>Neden Detoks? (Belirtiler Bölümü)</h5>
+              <p>Yorgunluk, ödem vb. belirtileri listeleyen kart</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleSecSymptoms" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="admin-toggle-row">
+            <div class="admin-toggle-info">
+              <h5>8 Akşam Hediye Zoom Seansları</h5>
+              <p>Yüz yogası, nefes, kahkaha seansı vb. hediye atölyeler</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleSecSessions" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="admin-toggle-row">
+            <div class="admin-toggle-info">
+              <h5>3 Ayrı WhatsApp Grubu Süreci</h5>
+              <p>Ana grup, Soru-Cevap ve Duyuru grubu akışı</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleSecGroups" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="admin-toggle-row">
+            <div class="admin-toggle-info">
+              <h5>Uzman ve Hekim Kadrosu</h5>
+              <p>Dr. Abdullah Kesgin ve 45 kişilik ekip alanı</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleSecDoctors" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="admin-toggle-row">
+            <div class="admin-toggle-info">
+              <h5>8. Gün Mezuniyet Alanı</h5>
+              <p>Kutlama ve 2. Seviye devam bilgilendirme kutusu</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleSecGraduation" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="admin-toggle-row">
+            <div class="admin-toggle-info">
+              <h5>Sıkça Sorulan Sorular (SSS)</h5>
+              <p>Açılır kapanır akordiyon sorular alanı</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleSecFaq" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="admin-toggle-row">
+            <div class="admin-toggle-info">
+              <h5>Mobil Sabit Katılım Çubuğu</h5>
+              <p>Ekranın altında sürekli sabit duran buton</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleSecSticky" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- SEKME 3: DOKTOR KADROSU YÖNETİMİ -->
+        <div id="tabDoktorlar" class="admin-tab-content" style="display: none;">
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 14px;">
+            Doktor ve uzmanların isim, unvan ve fotoğraf adreslerini buradan değiştirebilirsiniz:
+          </p>
+          <div id="adminDoctorsFormContainer"></div>
+        </div>
+
+        <!-- SEKME 4: HEDİYE ZOOM SEANSLARI -->
+        <div id="tabSeanslar" class="admin-tab-content" style="display: none;">
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 14px;">
+            Canlı yayında hediye olarak verilen seansların başlık ve eğitmenlerini güncelleyin:
+          </p>
+          <div id="adminSessionsFormContainer"></div>
+        </div>
+
+        <!-- SEKME 5: GÜVENLİK VE DIŞA AKTAR -->
+        <div id="tabGuvenlik" class="admin-tab-content" style="display: none;">
+          <div class="admin-form-group">
+            <label>🔑 Yeni Yönetici Şifresi:</label>
+            <input type="text" id="cfgNewPassword" class="admin-input" placeholder="Yeni şifrenizi girin">
+          </div>
+
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 14px; padding: 14px; margin-top: 18px;">
+            <h5 style="color: #1e40af; font-size: 0.92rem; margin-bottom: 4px;">💾 Sunucuya Yüklemek İçin İndir (Export)</h5>
+            <p style="font-size: 0.8rem; color: #1e3a8a; line-height: 1.5; margin-bottom: 10px;">
+              Yaptığınız tüm değişiklikleri doğrudan içeren yeni <strong>index.html</strong> dosyasını bilgisayarınıza indirebilir, hosting veya sunucunuza yükleyebilirsiniz.
+            </p>
+            <button class="admin-btn admin-btn-export" onclick="exportStaticHtml()" style="width: 100%;">
+              📥 Güncel index.html Dosyasını İndir
+            </button>
+          </div>
+
+          <div style="margin-top: 20px; text-align: center;">
+            <button class="admin-btn admin-btn-reset" onclick="resetAllSettings()">
+              ⚠️ Tüm Ayarları Varsayılana Sıfırla
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="admin-footer">
+        <button class="admin-btn admin-btn-export" onclick="closeAdminDashboard()">Kapat</button>
+        <button class="admin-btn admin-btn-save" onclick="saveAdminData()">💾 Değişiklikleri Kaydet & Yayınla</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ----------------------------------------------------
+    // VARSAYILAN SİTE VERİLERİ (DEFAULT DATA)
+    // ----------------------------------------------------
+    const defaultSiteData = {
+      password: "Detoks8080*",
+      waLink: "https://chat.whatsapp.com/ItHdw0hFUecEZMRWCLAoMU",
+      waBtnText: "DETOKS TANITIMINA KATIL →",
+      topBar: "🌿 7 Günlük 1. Seviye Detoks Tanıtım Programı Başlıyor — Kontenjan Sınırlıdır!",
+      heroBadge: "⚡ Dr. Abdullah KESGİN & Uzm. Dr. Eyyüb YILMAZ ve 45 Kişilik Ekip Eşliğinde",
+      heroTitle: "Online Detoks<br>Programı Başlıyor",
+      heroLead: "Sabahları zor uyanmaktan, geçmeyen ödem ve yorgunluk hissinden yoruldun mu? Aç kalmadan, evinin düzenini bozmadan ve yalnız olmadan bedenini 7 günde sıfırla.",
+      copyright: "© 2026 Onlinedetoks. Tüm hakları saklıdır.",
+      sections: {
+        topBar: true,
+        console: true,
+        symptoms: true,
+        sessions: true,
+        groups: true,
+        doctors: true,
+        graduation: true,
+        faq: true,
+        sticky: true
+      },
+      doctors: [
+        {
+          name: "Dr. Abdullah Kesgin",
+          specialty: "Emekli Başhekim & Sporcu Hekim",
+          image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&auto=format&fit=crop&q=80"
+        },
+        {
+          name: "Uzm. Dr. Eyyüb Yılmaz",
+          specialty: "İç Hastalıkları Uzmanı",
+          image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&auto=format&fit=crop&q=80"
+        },
+        {
+          name: "Ayşe Tolga",
+          specialty: "Bütünsel Yaşam & Aromaterapist",
+          image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80"
+        },
+        {
+          name: "Dr. Rezan Cezan",
+          specialty: "Bütünsel Tıp & Biyoregülasyon",
+          image: "https://images.unsplash.com/photo-1594824813511-209a80572e9d?w=300&auto=format&fit=crop&q=80"
+        }
+      ],
+      sessions: [
+        { title: "Yüz Yogası & Doğal Güzellik", instructor: "Aslı Özden", icon: "🧘‍♀️" },
+        { title: "Nefes Eğitimi & Zihin Dinginliği", instructor: "Merve Nayman", icon: "🌬️" },
+        { title: "EFT & Stres Boşaltma", instructor: "Aygün Güleşir", icon: "✨" },
+        { title: "Kahkaha & Pozitif Enerji", instructor: "Gülay İdalı", icon: "😄" },
+        { title: "Nöroformat Meditasyon", instructor: "Fazilet Eberdes", icon: "🧠" },
+        { title: "Beden & Zihin Terapi", instructor: "Sibel Odabaşı", icon: "🌸" },
+        { title: "Bilinçli Beslenme & Gıda", instructor: "Erdem Öner (TÜBİTAK Gıda Müh.)", icon: "🔬" },
+        { title: "Duygusal Yenilenme (JAAS)", instructor: "Ayten Demir", icon: "💖" }
+      ]
+    };
+
+    let siteData = { ...defaultSiteData };
+
+    // LocalStorage'dan yükleme
+    function loadSavedData() {
+      const saved = localStorage.getItem("onlinedetoks_admin_data");
+      if (saved) {
+        try {
+          siteData = JSON.parse(saved);
+          if (siteData.password === "detoks2026") {
+            siteData.password = "Detoks8080*";
+            localStorage.setItem("onlinedetoks_admin_data", JSON.stringify(siteData));
+          }
+        } catch (e) {
+          console.error("Kayıtlı veri okunamadı", e);
+        }
+      }
+      applySiteDataToDom();
+    }
+
+    // Verileri Sayfaya Uygula
+    function applySiteDataToDom() {
+      // Metinler
+      if (document.getElementById("txtTopBar")) document.getElementById("txtTopBar").innerText = siteData.topBar;
+      if (document.getElementById("txtHeroBadge")) document.getElementById("txtHeroBadge").innerText = siteData.heroBadge;
+      if (document.getElementById("txtHeroTitle")) document.getElementById("txtHeroTitle").innerHTML = siteData.heroTitle;
+      if (document.getElementById("txtHeroLead")) document.getElementById("txtHeroLead").innerText = siteData.heroLead;
+      if (document.getElementById("txtCopyright")) document.getElementById("txtCopyright").innerText = siteData.copyright;
+
+      // WhatsApp Bağlantıları
+      document.querySelectorAll(".wa-link").forEach(a => a.href = siteData.waLink);
+      document.querySelectorAll(".wa-btn-text").forEach(el => el.innerText = siteData.waBtnText || "DETOKS TANITIMINA KATIL →");
+
+      // Bölüm Görünürlükleri
+      toggleElement("sectionTopBar", siteData.sections.topBar);
+      toggleElement("sectionConsole", siteData.sections.console);
+      toggleElement("sectionSymptoms", siteData.sections.symptoms);
+      toggleElement("sectionSessions", siteData.sections.sessions);
+      toggleElement("sectionGroups", siteData.sections.groups);
+      toggleElement("sectionDoctors", siteData.sections.doctors);
+      toggleElement("sectionGraduation", siteData.sections.graduation);
+      toggleElement("sectionFaq", siteData.sections.faq);
+      toggleElement("sectionSticky", siteData.sections.sticky);
+
+      // Doktorları Çiz
+      renderDoctors();
+
+      // Seansları Çiz
+      renderSessions();
+    }
+
+    function toggleElement(id, isVisible) {
+      const el = document.getElementById(id);
+      if (el) el.style.display = isVisible ? "" : "none";
+    }
+
+    function renderDoctors() {
+      const grid = document.getElementById("doctorsGrid");
+      if (!grid) return;
+      grid.innerHTML = "";
+      siteData.doctors.forEach(doc => {
+        const card = document.createElement("div");
+        card.className = "clay-doc-card";
+        card.innerHTML = `
+          <div class="doc-avatar-wrap">
+            <img src="${doc.image}" alt="${doc.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&auto=format&fit=crop&q=80'">
+            <div class="doc-verified-check">✓</div>
+          </div>
+          <div>
+            <h4>${doc.name}</h4>
+            <span class="doc-specialty">${doc.specialty}</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function renderSessions() {
+      const grid = document.getElementById("sessionsGrid");
+      if (!grid) return;
+      grid.innerHTML = "";
+      siteData.sessions.forEach(s => {
+        const item = document.createElement("div");
+        item.className = "session-item";
+        item.innerHTML = `
+          <span class="session-gift-badge">Hediye Seans</span>
+          <div class="session-icon">${s.icon || "✨"}</div>
+          <h4>${s.title}</h4>
+          <span class="instructor">${s.instructor}</span>
+        `;
+        grid.appendChild(item);
+      });
+    }
+
+    // ----------------------------------------------------
+    // ADMİN PANELİ FONKSİYONLARI
+    // ----------------------------------------------------
+    function openAdminLogin() {
+      document.getElementById("adminLoginOverlay").style.display = "flex";
+      document.getElementById("adminPasswordInput").value = "";
+      document.getElementById("loginErrorMsg").style.display = "none";
+      setTimeout(() => document.getElementById("adminPasswordInput").focus(), 100);
+    }
+
+    function closeAdminLogin() {
+      document.getElementById("adminLoginOverlay").style.display = "none";
+    }
+
+    function checkAdminPassword() {
+      const pwd = document.getElementById("adminPasswordInput").value.trim();
+      const actualPwd = siteData.password || "Detoks8080*";
+      if (pwd === actualPwd) {
+        closeAdminLogin();
+        openAdminDashboard();
+      } else {
+        document.getElementById("loginErrorMsg").style.display = "block";
+      }
+    }
+
+    // Enter tuşu ile şifre kontrolü
+    document.getElementById("adminPasswordInput").addEventListener("keyup", function(e) {
+      if (e.key === "Enter") checkAdminPassword();
+    });
+
+    function openAdminDashboard() {
+      document.getElementById("adminDashboardOverlay").style.display = "flex";
+      populateAdminFields();
+    }
+
+    function closeAdminDashboard() {
+      document.getElementById("adminDashboardOverlay").style.display = "none";
+    }
+
+    function switchAdminTab(tabId, btn) {
+      document.querySelectorAll(".admin-tab-content").forEach(c => c.style.display = "none");
+      document.querySelectorAll(".admin-tab-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById(tabId).style.display = "block";
+      btn.classList.add("active");
+    }
+
+    function populateAdminFields() {
+      // Genel
+      document.getElementById("cfgWaLink").value = siteData.waLink || "";
+      document.getElementById("cfgTopBar").value = siteData.topBar || "";
+      document.getElementById("cfgHeroBadge").value = siteData.heroBadge || "";
+      document.getElementById("cfgHeroTitle").value = siteData.heroTitle || "";
+      document.getElementById("cfgHeroLead").value = siteData.heroLead || "";
+      document.getElementById("cfgWaBtnText").value = siteData.waBtnText || "";
+      document.getElementById("cfgCopyright").value = siteData.copyright || "";
+
+      // Bölümler
+      document.getElementById("toggleSecTopBar").checked = siteData.sections.topBar;
+      document.getElementById("toggleSecConsole").checked = siteData.sections.console;
+      document.getElementById("toggleSecSymptoms").checked = siteData.sections.symptoms;
+      document.getElementById("toggleSecSessions").checked = siteData.sections.sessions;
+      document.getElementById("toggleSecGroups").checked = siteData.sections.groups;
+      document.getElementById("toggleSecDoctors").checked = siteData.sections.doctors;
+      document.getElementById("toggleSecGraduation").checked = siteData.sections.graduation;
+      document.getElementById("toggleSecFaq").checked = siteData.sections.faq;
+      document.getElementById("toggleSecSticky").checked = siteData.sections.sticky;
+
+      // Doktor Formları
+      populateDoctorAdminForms();
+
+      // Seans Formları
+      populateSessionAdminForms();
+    }
+
+    function populateDoctorAdminForms() {
+      const container = document.getElementById("adminDoctorsFormContainer");
+      container.innerHTML = "";
+      siteData.doctors.forEach((doc, idx) => {
+        const box = document.createElement("div");
+        box.style = "background: #fffdf9; border: 1.5px solid #dce6d8; border-radius: 14px; padding: 12px; margin-bottom: 12px;";
+        box.innerHTML = `
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <strong style="font-size:0.85rem; color:var(--primary-green);">Doktor #${idx + 1}</strong>
+            <button onclick="removeDoctor(${idx})" style="background:none; border:none; color:#ef4444; font-size:0.75rem; cursor:pointer; font-weight:700;">Sil ✕</button>
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
+            <input type="text" value="${doc.name}" placeholder="İsim" id="docName_${idx}" class="admin-input" style="font-size:0.8rem;">
+            <input type="text" value="${doc.specialty}" placeholder="Unvan / Uzmanlık" id="docSpec_${idx}" class="admin-input" style="font-size:0.8rem;">
+          </div>
+          <input type="text" value="${doc.image}" placeholder="Resim URL (https://...)" id="docImg_${idx}" class="admin-input" style="font-size:0.75rem;">
+        `;
+        container.appendChild(box);
+      });
+
+      const addBtn = document.createElement("button");
+      addBtn.className = "admin-btn";
+      addBtn.style = "background: var(--accent-soft-sage); color: var(--primary-green); width: 100%; border: 1.5px dashed var(--accent-sage); font-weight: 700;";
+      addBtn.innerText = "+ Yeni Doktor / Uzman Ekle";
+      addBtn.onclick = addNewDoctor;
+      container.appendChild(addBtn);
+    }
+
+    function addNewDoctor() {
+      siteData.doctors.push({
+        name: "Yeni Uzman",
+        specialty: "Bütünsel Sağlık Danışmanı",
+        image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&auto=format&fit=crop&q=80"
+      });
+      populateDoctorAdminForms();
+    }
+
+    function removeDoctor(idx) {
+      if (confirm("Bu uzmanı listeden kaldırmak istediğinize emin misiniz?")) {
+        siteData.doctors.splice(idx, 1);
+        populateDoctorAdminForms();
+      }
+    }
+
+    function populateSessionAdminForms() {
+      const container = document.getElementById("adminSessionsFormContainer");
+      container.innerHTML = "";
+      siteData.sessions.forEach((s, idx) => {
+        const box = document.createElement("div");
+        box.style = "background: #fffdf9; border: 1.5px solid #dce6d8; border-radius: 12px; padding: 10px; margin-bottom: 8px; display:flex; gap:8px; align-items:center;";
+        box.innerHTML = `
+          <input type="text" value="${s.icon}" id="sIcon_${idx}" class="admin-input" style="width:48px; text-align:center; font-size:1.1rem; padding:6px;">
+          <input type="text" value="${s.title}" id="sTitle_${idx}" class="admin-input" style="flex:2; font-size:0.82rem; padding:8px 10px;">
+          <input type="text" value="${s.instructor}" id="sInst_${idx}" class="admin-input" style="flex:1.5; font-size:0.82rem; padding:8px 10px;">
+        `;
+        container.appendChild(box);
+      });
+    }
+
+    function saveAdminData() {
+      // Genel
+      siteData.waLink = document.getElementById("cfgWaLink").value.trim();
+      siteData.topBar = document.getElementById("cfgTopBar").value.trim();
+      siteData.heroBadge = document.getElementById("cfgHeroBadge").value.trim();
+      siteData.heroTitle = document.getElementById("cfgHeroTitle").value.trim();
+      siteData.heroLead = document.getElementById("cfgHeroLead").value.trim();
+      siteData.waBtnText = document.getElementById("cfgWaBtnText").value.trim();
+      siteData.copyright = document.getElementById("cfgCopyright").value.trim();
+
+      // Bölümler
+      siteData.sections.topBar = document.getElementById("toggleSecTopBar").checked;
+      siteData.sections.console = document.getElementById("toggleSecConsole").checked;
+      siteData.sections.symptoms = document.getElementById("toggleSecSymptoms").checked;
+      siteData.sections.sessions = document.getElementById("toggleSecSessions").checked;
+      siteData.sections.groups = document.getElementById("toggleSecGroups").checked;
+      siteData.sections.doctors = document.getElementById("toggleSecDoctors").checked;
+      siteData.sections.graduation = document.getElementById("toggleSecGraduation").checked;
+      siteData.sections.faq = document.getElementById("toggleSecFaq").checked;
+      siteData.sections.sticky = document.getElementById("toggleSecSticky").checked;
+
+      // Doktorlar
+      siteData.doctors.forEach((doc, idx) => {
+        const n = document.getElementById(`docName_${idx}`);
+        const s = document.getElementById(`docSpec_${idx}`);
+        const im = document.getElementById(`docImg_${idx}`);
+        if (n) doc.name = n.value.trim();
+        if (s) doc.specialty = s.value.trim();
+        if (im) doc.image = im.value.trim();
+      });
+
+      // Seanslar
+      siteData.sessions.forEach((sess, idx) => {
+        const ic = document.getElementById(`sIcon_${idx}`);
+        const t = document.getElementById(`sTitle_${idx}`);
+        const ins = document.getElementById(`sInst_${idx}`);
+        if (ic) sess.icon = ic.value.trim();
+        if (t) sess.title = t.value.trim();
+        if (ins) sess.instructor = ins.value.trim();
+      });
+
+      // Şifre Değişimi
+      const newPwd = document.getElementById("cfgNewPassword").value.trim();
+      if (newPwd) {
+        siteData.password = newPwd;
+        alert("Yönetici şifreniz başarıyla güncellendi!");
+        document.getElementById("cfgNewPassword").value = "";
+      }
+
+      // LocalStorage'a kaydet
+      localStorage.setItem("onlinedetoks_admin_data", JSON.stringify(siteData));
+
+      // DOM'u güncelle
+      applySiteDataToDom();
+
+      alert("🎉 Tüm değişiklikler başarıyla kaydedildi ve sayfada canlıya alındı!");
+      closeAdminDashboard();
+    }
+
+    function resetAllSettings() {
+      if (confirm("Tüm ayarları orijinal fabrika varsayılanlarına sıfırlamak istediğinize emin misiniz?")) {
+        localStorage.removeItem("onlinedetoks_admin_data");
+        siteData = JSON.parse(JSON.stringify(defaultSiteData));
+        applySiteDataToDom();
+        alert("Tüm ayarlar sıfırlandı!");
+        closeAdminDashboard();
+      }
+    }
+
+    // HTML Dışa Aktarma (Export Static HTML)
+    function exportStaticHtml() {
+      const fullHtml = document.documentElement.outerHTML;
+      const blob = new Blob([fullHtml], { type: "text/html;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "index.html";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // Klavye Kısayolu: Ctrl + Shift + A -> Admin Girişi
+    document.addEventListener("keydown", function(e) {
+      if (e.ctrlKey && e.shiftKey && (e.key === "A" || e.key === "a")) {
+        e.preventDefault();
+        openAdminLogin();
+      }
+    });
+
+    // ----------------------------------------------------
+    // İNTERAKTİF SAYFA ETKİLEŞİMLERİ (Rutinler & SSS)
+    // ----------------------------------------------------
+    const themeRoutines = {
+      sabah: {
+        title: "<span>☀️</span> Güne Arınarak & Hafif Başla",
+        badge: "1. Adım",
+        text: "Sabah telefonuna günün başlangıç rehberi ve 10 dakikalık omurga açıcı nefes hareketi gelir. Yüzlerce kadınla aynı anda uygulamanın verdiği güçle güne dinç başlarsın.",
+        tags: ["✓ Günlük Başlangıç Rehberi", "✓ 10 Dk Nefes Egzersizi", "✓ Binlerce Kadın Seninle"]
+      },
+      motivasyon: {
+        title: "<span>🌸</span> Grup Dayanışması & Soru-Cevap",
+        badge: "2. Adım",
+        text: "Aklına takılan her soruyu doktorumuza ve 45 kişilik ekibimize sorabilirsin. Yalnız değilsin, binlerce kadının paylaştığı yüksek motivasyon gün boyu seninle.",
+        tags: ["✓ 45 Kişilik Uzman Heyeti", "✓ Aktif Soru-Cevap", "✓ Güçlü Kadın Topluluğu"]
+      },
+      gece: {
+        title: "<span>🌙</span> Akşam Zoom Yayını & Gece Onarımı",
+        badge: "3. Adım",
+        text: "Her akşam hediye canlı Zoom atölyemizde buluşuyoruz. Yüz yogası, stres yönetimi, kahkaha veya nefes seansıyla zihnini boşaltıp derin bir uykuya dalıyorsun.",
+        tags: ["✓ 8 Akşam Hediye Seans", "✓ Yüz Yogası & Zihinsel Terapi", "✓ Dinlendirici & Hafif Uyku"]
+      }
+    };
+
+    function switchThemePillar(type, element) {
+      document.querySelectorAll('.pillar-card').forEach(card => card.classList.remove('active'));
+      element.classList.add('active');
+      const data = themeRoutines[type];
+      const box = document.getElementById('themeDetailBox');
+      box.style.opacity = '0';
+      box.style.transform = 'translateY(5px)';
+      setTimeout(() => {
+        document.getElementById('themeDetailTitle').innerHTML = data.title;
+        document.getElementById('themeDetailBadge').textContent = data.badge;
+        document.getElementById('themeDetailText').textContent = data.text;
+        const tagContainer = document.getElementById('themeDetailTags');
+        tagContainer.innerHTML = '';
+        data.tags.forEach(t => {
+          const span = document.createElement('span');
+          span.className = 'detail-tag';
+          span.textContent = t;
+          tagContainer.appendChild(span);
+        });
+        box.style.opacity = '1';
+        box.style.transform = 'translateY(0)';
+      }, 140);
+    }
+
+    function toggleClayFaq(headerEl) {
+      const card = headerEl.parentElement;
+      const isOpen = card.classList.contains('active');
+      document.querySelectorAll('.clay-faq-card').forEach(c => {
+        if (c !== card) c.classList.remove('active');
+      });
+      if (isOpen) { card.classList.remove('active'); } else { card.classList.add('active'); }
+    }
+
+    // Başlangıçta yükle
+    loadSavedData();
+  </script>
+</body>
+</html>
